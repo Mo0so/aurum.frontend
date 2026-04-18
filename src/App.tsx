@@ -11,6 +11,9 @@ import AdminMenuPage from "./pages/admin/AdminMenuPage.tsx";
 import AdminGallery from "./pages/admin/AdminGallery.tsx";
 import AdminReviews from "./pages/admin/AdminReviews.tsx";
 import AdminSettings from "./pages/admin/AdminSettings.tsx";
+import AdminLogin from "./pages/admin/AdminLogin.tsx";
+import ReviewSubmit from "./pages/ReviewSubmit.tsx";
+import RequireAuth from "./components/admin/RequireAuth.tsx";
 
 const queryClient = new QueryClient();
 
@@ -22,12 +25,14 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/admin/reservations" element={<AdminReservations />} />
-          <Route path="/admin/menu" element={<AdminMenuPage />} />
-          <Route path="/admin/gallery" element={<AdminGallery />} />
-          <Route path="/admin/reviews" element={<AdminReviews />} />
-          <Route path="/admin/settings" element={<AdminSettings />} />
+          <Route path="/review/:token" element={<ReviewSubmit />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<RequireAuth><AdminDashboard /></RequireAuth>} />
+          <Route path="/admin/reservations" element={<RequireAuth><AdminReservations /></RequireAuth>} />
+          <Route path="/admin/menu" element={<RequireAuth><AdminMenuPage /></RequireAuth>} />
+          <Route path="/admin/gallery" element={<RequireAuth><AdminGallery /></RequireAuth>} />
+          <Route path="/admin/reviews" element={<RequireAuth><AdminReviews /></RequireAuth>} />
+          <Route path="/admin/settings" element={<RequireAuth><AdminSettings /></RequireAuth>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
