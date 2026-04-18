@@ -45,13 +45,21 @@ export interface GalleryImage {
   alt: string;
 }
 
+export interface DayHours {
+  day: string;
+  closed: boolean;
+  open: string;  // "HH:mm"
+  close: string; // "HH:mm"
+}
+
 export interface RestaurantSettings {
   name: string;
   tagline: string;
   phone: string;
   email: string;
   address: string;
-  openingHours: string;
+  openingHours: string; // legacy summary string
+  hours: DayHours[];
   socialMedia: { instagram: string; facebook: string; twitter: string };
 }
 
