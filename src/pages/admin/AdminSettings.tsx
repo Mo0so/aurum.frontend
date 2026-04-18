@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { store, type RestaurantSettings } from "@/lib/store";
+import { store, type DayHours } from "@/lib/store";
 import AdminLayout from "@/components/admin/AdminLayout";
 import { Check } from "lucide-react";
 
@@ -12,6 +12,11 @@ export default function AdminSettings() {
     store.setSettings(settings);
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
+  };
+
+  const updateDay = (idx: number, patch: Partial<DayHours>) => {
+    const hours = settings.hours.map((h, i) => (i === idx ? { ...h, ...patch } : h));
+    setSettings({ ...settings, hours });
   };
 
   return (
@@ -27,7 +32,43 @@ export default function AdminSettings() {
         <Field label="Phone" value={settings.phone} onChange={(v) => setSettings({ ...settings, phone: v })} />
         <Field label="Email" value={settings.email} onChange={(v) => setSettings({ ...settings, email: v })} />
         <Field label="Address" value={settings.address} onChange={(v) => setSettings({ ...settings, address: v })} />
-        <Field label="Opening Hours" value={settings.openingHours} onChange={(v) => setSettings({ ...settings, openingHours: v })} />
+
+        <div className="border-t border-border/10 pt-6">
+          <h3 className="text-surface-dark-foreground font-medium text-sm mb-4">Opening Hours</h3>
+          <div className="space-y-2">
+            {settings.hours.map((h, idx) => (
+              <div key={h.day} className="flex items-center gap-3 bg-surface-dark-elevated border border-border/10 rounded-sm px-4 py-2.5">
+                <div className="w-24 text-surface-dark-foreground/70 text-sm">{h.day}</div>
+                <label className="flex items-center gap-2 text-xs text-surface-dark-foreground/60 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={h.closed}
+                    onChange={(e) => updateDay(idx, { closed: e.target.checked })}
+                    className="accent-gold"
+                  />
+                  Closed
+                </label>
+                <div className="ml-auto flex items-center gap-2">
+                  <input
+                    type="time"
+                    value={h.open}
+                    disabled={h.closed}
+                    onChange={(e) => updateDay(idx, { open: e.target.value })}
+                    className="bg-surface-dark border border-border/20 rounded-sm px-2 py-1.5 text-surface-dark-foreground text-sm focus:outline-none focus:border-gold/50 disabled:opacity-40"
+                  />
+                  <span className="text-surface-dark-foreground/40 text-xs">to</span>
+                  <input
+                    type="time"
+                    value={h.close}
+                    disabled={h.closed}
+                    onChange={(e) => updateDay(idx, { close: e.target.value })}
+                    className="bg-surface-dark border border-border/20 rounded-sm px-2 py-1.5 text-surface-dark-foreground text-sm focus:outline-none focus:border-gold/50 disabled:opacity-40"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
         <div className="border-t border-border/10 pt-6">
           <h3 className="text-surface-dark-foreground font-medium text-sm mb-4">Social Media</h3>
