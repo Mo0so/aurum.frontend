@@ -1,5 +1,6 @@
-import { Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, CalendarDays, UtensilsCrossed, ImageIcon, Star, Settings, ArrowLeft } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { LayoutDashboard, CalendarDays, UtensilsCrossed, ImageIcon, Star, Settings, ArrowLeft, LogOut } from "lucide-react";
+import { ADMIN_AUTH_KEY } from "@/components/admin/RequireAuth";
 
 const navItems = [
   { label: "Dashboard", path: "/admin", icon: LayoutDashboard },
@@ -12,6 +13,12 @@ const navItems = [
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem(ADMIN_AUTH_KEY);
+    navigate("/admin/login", { replace: true });
+  };
 
   return (
     <div className="min-h-screen bg-surface-dark flex">
@@ -31,7 +38,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             );
           })}
         </nav>
-        <div className="p-4 border-t border-border/10">
+        <div className="p-4 border-t border-border/10 space-y-2">
+          <button onClick={handleLogout} className="flex items-center gap-2 text-surface-dark-foreground/40 text-sm hover:text-gold transition-colors w-full">
+            <LogOut size={16} /> Logout
+          </button>
           <Link to="/" className="flex items-center gap-2 text-surface-dark-foreground/40 text-sm hover:text-gold transition-colors">
             <ArrowLeft size={16} /> Back to Website
           </Link>
