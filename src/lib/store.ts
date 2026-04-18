@@ -94,6 +94,15 @@ const defaultSettings: RestaurantSettings = {
   email: "reservations@aurum.com",
   address: "42 Gold Street, Manhattan, New York, NY 10005",
   openingHours: "Tue–Sun: 6:00 PM – 11:00 PM | Mon: Closed",
+  hours: [
+    { day: "Monday", closed: true, open: "18:00", close: "23:00" },
+    { day: "Tuesday", closed: false, open: "18:00", close: "23:00" },
+    { day: "Wednesday", closed: false, open: "18:00", close: "23:00" },
+    { day: "Thursday", closed: false, open: "18:00", close: "23:00" },
+    { day: "Friday", closed: false, open: "18:00", close: "23:00" },
+    { day: "Saturday", closed: false, open: "18:00", close: "23:00" },
+    { day: "Sunday", closed: false, open: "18:00", close: "23:00" },
+  ],
   socialMedia: { instagram: "#", facebook: "#", twitter: "#" },
 };
 
