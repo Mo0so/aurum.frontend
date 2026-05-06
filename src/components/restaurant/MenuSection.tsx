@@ -19,7 +19,7 @@ export default function MenuSection() {
 		const fetchMenu = async () => {
 			try {
 				const res = await axiosClient.get('/dishes')
-				setMenu(res.data.dishes)
+				setMenu(res.data?.dishes ?? [])
 			} catch (error) {
 				console.error(getErrorMessage(error))
 			}
@@ -28,7 +28,7 @@ export default function MenuSection() {
 		fetchMenu()
 	}, [])
 
-	const filtered = menu.filter(
+	const filtered = (menu ?? []).filter(
 		i => i.category?.toLowerCase() === active.toLowerCase(),
 	)
 
