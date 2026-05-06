@@ -11,7 +11,7 @@ export default function GallerySection() {
 		const fetchGallery = async () => {
 			try {
 				const res = await axiosClient.get('/gallery')
-				setGallery(res.data.gallery)
+				setGallery(res.data?.gallery ?? [])
 			} catch (error) {
 				console.error(getErrorMessage(error))
 			}
