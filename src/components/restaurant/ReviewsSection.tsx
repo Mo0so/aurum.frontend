@@ -13,7 +13,7 @@ export default function ReviewsSection() {
 		const fetchReviews = async () => {
 			try {
 				const res = await axiosClient.get('/review')
-				setReviews(res.data.reviews)
+				setReviews(res.data?.reviews ?? [])
 			} catch (error) {
 				console.error(getErrorMessage(error))
 			}
