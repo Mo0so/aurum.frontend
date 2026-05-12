@@ -45,7 +45,7 @@ export default function AdminSettings() {
 		})
 	}
 
-	if (settings) {
+	if (!settings) {
 		return (
 			<AdminLayout>
 				<div className='flex min-h-[60vh] items-center justify-center'>
