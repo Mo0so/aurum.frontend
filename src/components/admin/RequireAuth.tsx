@@ -1,3 +1,4 @@
+import PageLoader from '@/components/PageLoader'
 import { axiosClient } from '@/lib/api'
 import { useEffect, useState } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
@@ -27,7 +28,7 @@ export default function RequireAuth({
 		checkAuth()
 	}, [])
 
-	if (loading) return null
+	if (loading) return <PageLoader label='Checking authentication' />
 
 	if (!isAuthed) {
 		return <Navigate to='/admin/login' state={{ from: location }} replace />
