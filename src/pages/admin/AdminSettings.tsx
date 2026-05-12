@@ -45,7 +45,23 @@ export default function AdminSettings() {
 		})
 	}
 
-	if (!settings) return null
+	if (settings) {
+		return (
+			<AdminLayout>
+				<div className='flex min-h-[60vh] items-center justify-center'>
+					<div className='flex flex-col items-center gap-4'>
+						<div className='h-12 w-12 animate-spin rounded-full border-2 border-gold/20 border-t-gold' />
+
+						<div className='text-center'>
+							<h2 className='text-lg font-medium text-surface-dark-foreground'>
+								Loading settings
+							</h2>
+						</div>
+					</div>
+				</div>
+			</AdminLayout>
+		)
+	}
 
 	return (
 		<AdminLayout>
@@ -156,7 +172,6 @@ export default function AdminSettings() {
 					</div>
 				</div>
 
-				{/* 🔥 SOCIAL HAM OLD STRUCTURE */}
 				<div className='border-t border-border/10 pt-6'>
 					<h3 className='text-surface-dark-foreground font-medium text-sm mb-4'>
 						Social Media
