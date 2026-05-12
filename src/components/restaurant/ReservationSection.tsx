@@ -59,7 +59,6 @@ export default function ReservationSection() {
 			setSubmitted(true)
 			setError('')
 		} catch (err) {
-			console.log(err)
 			setError(getErrorMessage(err))
 		} finally {
 			setLoading(false)

@@ -14,7 +14,6 @@ export default function AdminSettings() {
 	useEffect(() => {
 		const fetch = async () => {
 			const res = await axiosClient.get('/admin/restaurant')
-			console.log(res)
 			setSettings(res.data.restaurant)
 		}
 		fetch()

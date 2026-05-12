@@ -16,7 +16,6 @@ export default function ContactSection() {
 			const res = await axiosClient.get('/restaurant')
 			setSettings(res.data.restaurant)
 			setStatus(res.data.status)
-			console.log(res)
 		}
 
 		fetchSettings()
