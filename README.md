@@ -11,13 +11,13 @@ https://github.com/MustafoAlisherovich/aurum.backend
 ## 📸 Screenshots
 
 ### Homepage
-![Homepage](./screenshots/home.png)
+![Homepage](./public/screenshots/home.png)
 
 ### Booking Form
-![Booking](./screenshots/booking.png)
+![Booking](./public/screenshots/booking.png)
 
 ### Admin Dashboard
-![Dashboard](./screenshots/dashboard.png)
+![Dashboard](./public/screenshots/dashboard.png)
 
 ---
 
