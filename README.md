@@ -4,7 +4,7 @@ Modern restaurant booking and management frontend built with React.
 Includes a customer-facing website and an admin dashboard for managing reservations, menu items, reviews, and restaurant settings.
 
 > Backend Repository:  
-https://github.com/MustafoAlisherovich/aurum.backend
+https://github.com/mo0so/aurum.backend
 
 ---
 
@@ -68,7 +68,7 @@ VITE_SERVER_URL=http://localhost:3000/api/
 Clone the repository:
 
 ```bash
-git clone https://github.com/MustafoAlisherovich/aurum.frontend.git
+git clone https://github.com/mo0so/aurum.frontend.git
 cd aurum.frontend
 ```
 
@@ -103,7 +103,7 @@ src/
 ## 🌐 Live Demo
 
 Frontend:  
-https://aurum.mustafoalisherovich.ru
+https://aurum.mooso.dev
 
 ---
 
